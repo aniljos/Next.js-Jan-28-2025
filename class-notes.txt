@@ -30,5 +30,13 @@ Project Files
 11. app/page.tsx: The page to be rendered on the root/home route: (http://localhost:3000/)
 
 
+React Components
+	- Authoring: function or class
+	- Rendering: Client components(CSR) or Server Components(SSR)
+	- The default for rendering is Server Components
+	- To create a client component(functional/ class), annotate with the 'use client' directive
+
+
+
 
 
