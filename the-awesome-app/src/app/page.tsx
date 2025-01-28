@@ -11,7 +11,7 @@ export default function Home() {
       <Message text="Hello Next.js" color="green"/> */}
      
       <Counter initialValue={5}/>
-      <Counter initialValue={10}/>
+      {/* <Counter initialValue={10}/> */}
     </div>
   );
 }

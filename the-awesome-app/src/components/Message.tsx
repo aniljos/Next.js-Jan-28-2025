@@ -1,9 +1,22 @@
+import { useEffect } from "react";
+
 type MessageProps = {
     text: string;
     color?: string;
 }
 
 export function Message(props: MessageProps){
+
+
+    useEffect(() => {
+        console.log("[Message] component mounted");
+
+
+        return () => {
+            console.log("[Message] component unmounted")
+        }
+
+    }, [])
 
     console.log("Message", props);
     return (
