@@ -7,6 +7,28 @@ REST API Mock: https://github.com/aniljos/REST-API-Mock
 
 Babel cdn: https://cdnjs.com/libraries/babel-standalone/7.26.3
 
+Project Files
+
+1. package.json: npm configuration file
+		- scripts
+		- dependencies: prod & dev
+2. node_modules folder
+		- all dependencies are installed here
+3. tsconfig.json: typescript configuration file
+4. next.config.ts: Next configuration
+	- API Routes
+	- React
+5. eslint.config.mjs
+	
+6. public folder:
+	-static resources publically available
+7. src folder: optional folder for all the source code
+8. app folder : App router related files
+9. pages folder: Pages router related files
+
+10. app/layout.tsx: The root component that defines the application layout
+11. app/page.tsx: The page to be rendered on the root/home route: (http://localhost:3000/)
+
 
 
 
