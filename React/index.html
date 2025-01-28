@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.3/babel.min.js" integrity="sha512-NyQU9Gq/x36ldUUB9k8SEVCUUIJYxFjtwa7Ndz5h6noqqcSGx3nnmdK26bXiVWlo8ZU147EyJlydvFQEF97I/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>React</title>
+</head>
+<body>
+    <h3>React Application</h3>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="app4"></div>
+
+    <script type="text/babel">
+        // create an element(dynamic) <div>This is a React Element</div>, append it to the div with id=app1.
+        const element = React.createElement('div', null, 'This is a React Element');
+        ReactDOM.createRoot(document.getElementById("app1")).render(element);
+
+        // create an element(dynamic) <div><h4>Hello World</h4></div>, append it to the div with id=app2.
+        //const element2 = React.createElement('div', null, '<h4>Hello World</h4>');
+        const element2 = React.createElement('div', null, React.createElement('h4', null, 'Hello World'));
+        ReactDOM.createRoot(document.getElementById("app2")).render(element2);
+
+        // JSX: create an element(dynamic) <div><h4>Hello World JSX</h4></div>, append it to the div with id=app3.
+        ReactDOM.createRoot(document.getElementById("app3")).render(<div><h4>Hello World JSX</h4></div>);
+
+        //Component - function, class
+        function MyComponent(){
+            // return the JSX(UI)
+            return (
+                <div>
+                    <h4>Hello World from MyComponent</h4>
+                </div>
+            );
+        }
+        ReactDOM.createRoot(document.getElementById("app4")).render(<MyComponent/>);
+
+
+
+
+    </script>
+</body>
+</html>
