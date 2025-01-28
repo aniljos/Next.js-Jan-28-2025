@@ -1,6 +1,6 @@
 Nextjs session 28th-Jan-2025
 
-Git Url: https://github.com/aniljos/Next-Jan-13-2025
+Git Url: https://github.com/aniljos/Next.js-Jan-28-2025
 REST API Mock: https://github.com/aniljos/REST-API-Mock
 
 
