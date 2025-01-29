@@ -61,6 +61,9 @@ state(useState)
 			
 			setCounter(currentCount => currentCount + 1);  ==> code to invoke the callback(currentCount) 5 => 6
 			setCounter(currentCount => currentCount + 1);  ==> code to invoke the callback(currentCount) 6 => 7
+   - state should be treated as immutable
+		- create a copy(mutable), change the copy and reset the state with the copy.
+		
 			
 useEffect
 	- lifecycle hooks: mounted, updated, unmount
@@ -107,6 +110,11 @@ Axios
 		- Used with promises
 		- Allows write async code to look and behave as synchronous
 		- Overcome callback hell 
+		
+CSS
+  - inline styles: style attribute
+  - css class
+  - css selectors
 		
 	
 
