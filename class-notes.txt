@@ -83,10 +83,30 @@ App Design
 		
 Form Controls
 	- uncontrolled : read/set the value by getting a reference the element: useRef
+		-non-reactive
 	
 	- controlled : 
 			- bind the control to the state(useState)
 			- reactive
+			
+			
+Browser(make http calls)
+	- XMLHttpRequest Object
+	- fetch apis( HTML 5)
+	
+Axios
+	- Http Status Codes
+		100 - Information
+		200, 201, 204 - Success
+		300 - Redirects
+		
+		400,401, 403, 404 - Client error
+		500, 503 -Server error
+		
+	- async and await -- Keywords in javascript
+		- Used with promises
+		- Allows write async code to look and behave as synchronous
+		- Overcome callback hell 
 		
 	
 

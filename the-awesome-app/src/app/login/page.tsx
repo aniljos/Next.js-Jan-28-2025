@@ -1,24 +1,58 @@
 'use client'
 
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    const router = useRouter();
+    const usernameInputRef = useRef<HTMLInputElement>(null);
 
+   
+    useEffect(() => {
+        console.log(usernameInputRef);
+        usernameInputRef.current?.focus()
+    }, [])
 
-    function handleSubmit(evt: FormEvent<HTMLFormElement>){
+    async function handleSubmit(evt: FormEvent<HTMLFormElement>){
 
         evt.preventDefault();
+
+        console.log("username", usernameInputRef.current?.value);
 
         if(!username || !password){
            setMessage("Enter the credentials");
         }
         else{
             // API call to validate the creds
-            setMessage("");
+            const url = "http://localhost:9000/login";
+            // axios
+            //     .post(url, {name: username, password})
+            //     .then((response)=> {
+            //         console.log("fullfilled", response);
+            //     })
+            //     .catch(error => {
+            //         console.log("rejected", error);
+            //     })
+
+            try {
+                
+                const response = await axios.post(url, {name: username, password});
+                console.log("fullfilled", response);
+                setMessage("");
+                router.push("/")
+
+            } catch (error) {
+                console.log("rejected", error);
+                setMessage("Invalid credentials")
+            }
+
+
+            
         }
 
     }
@@ -35,12 +69,13 @@ export default function LoginPage() {
             <h3>Login</h3>
             <p>Signin to the application here...</p>
 
-            {message ? <div className="alert alert-danger">Enter the credentials</div> : null}
+            {message ? <div className="alert alert-danger">{message}</div> : null}
 
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
-                    <input type="text" className="form-control" id="username" value={username} onChange={handleUsernameChange}/>
+                    <input  ref={usernameInputRef} type="text" className="form-control" id="username" 
+                            value={username} onChange={handleUsernameChange}/>
                     {/* <span>You entered {username}</span> */}
                 </div>
 
