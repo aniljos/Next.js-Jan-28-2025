@@ -1,11 +1,13 @@
 Nextjs session 28th-Jan-2025
 
+
+
 Git Url: https://github.com/aniljos/Next.js-Jan-28-2025
 REST API Mock: https://github.com/aniljos/REST-API-Mock
 
-
-
 Babel cdn: https://cdnjs.com/libraries/babel-standalone/7.26.3
+
+Quiz Day 1: https://forms.gle/5ii116MfS1V334Dv8
 
 Project Files
 
@@ -35,6 +37,58 @@ React Components
 	- Rendering: Client components(CSR) or Server Components(SSR)
 	- The default for rendering is Server Components
 	- To create a client component(functional/ class), annotate with the 'use client' directive
+	
+props
+   - props is read-only
+   - <Message text="abc"/> => text is a props ==> props.text
+   - <Message>This is a message</Message> => the content(This is a message) is a prop ==> props.children
+   
+
+	
+
+   
+   
+   
+state(useState)
+   - state updates are asynchronous
+   - setState method : 2 overloads
+		setState(updateValue)
+		setState(callback):  callback(currentValue) => updatedValue
+   - state updates are batched
+			counter => 5
+			setCounter(counter + 1); ==> setCounter(6)
+			setCounter(counter + 1); ==> setCounter(6)
+			
+			setCounter(currentCount => currentCount + 1);  ==> code to invoke the callback(currentCount) 5 => 6
+			setCounter(currentCount => currentCount + 1);  ==> code to invoke the callback(currentCount) 6 => 7
+			
+useEffect
+	- lifecycle hooks: mounted, updated, unmount
+	- mounted: This is invoked always after the first render
+		- useEffect(setup, [])- dependency should be emtpy.
+		- API calls for data fetching
+		- Regitering event listeners on the window/document object
+		- DOM initilizations
+	- unmount: This is invoked before the component is unmounted
+		- A callback return from the mount useEffect
+		- Cancel the API callback
+		- Remove registered listeners
+		- Any other cleanup code
+	- useEffect(setup, [dependencies])
+	
+App Design
+	- Components are the building block
+	- Keep the components small
+		- Modular, easy to maintain and test
+		
+Form Controls
+	- uncontrolled : read/set the value by getting a reference the element: useRef
+	
+	- controlled : 
+			- bind the control to the state(useState)
+			- reactive
+		
+	
 
 
 
