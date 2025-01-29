@@ -115,6 +115,51 @@ CSS
   - inline styles: style attribute
   - css class
   - css selectors
+  
+EditProductPage: Assignment
+
+	- Fetch the product(component mount)- api GET http://localhost:9000/products/[id]
+    - Bind the fetched product to the input elements(controlled input)
+	- On save button click: update the product
+			-PUT http://localhost:9000/products/[id] Post the product
+			-save is successful : navigate back to /products/
+			- save fails: display a error message
+    -on cancel button click
+		navigate back to /products/
+		
+		
+State Management
+  Browser	
+	-localStorage => persistent info available across sessions
+	-sessionStorage => available only for that session
+	
+  Application
+	- Memory
+		-redux
+		-react context
+		
+Redux
+  Library
+	- redux
+	- react-redux
+	- @reduxjs/toolkit
+	- npm i @reduxjs/toolkit react-redux
+	
+  Action: an objeect
+	- {type: "set_token", token: "abcd"}
+	- {type: "clear_token"}
+  Reducer - a function
+	- receive the action, updated the state in the store
+	
+  react-redux library
+	-Provider: component to integrate redux with react
+	- Hooks
+		- useDispatch: returns a dispatch function
+		- useSelector: subscribe to the store and select data
+		- useStore: returns a handle to the store
+	
+	
+  
 		
 	
 

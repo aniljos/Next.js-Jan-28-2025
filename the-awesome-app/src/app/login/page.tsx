@@ -3,6 +3,7 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useDispatch } from 'react-redux';
 
 export default function LoginPage() {
 
@@ -11,23 +12,24 @@ export default function LoginPage() {
     const [message, setMessage] = useState("");
     const router = useRouter();
     const usernameInputRef = useRef<HTMLInputElement>(null);
+    const dispatch = useDispatch();
 
-   
+
     useEffect(() => {
         console.log(usernameInputRef);
         usernameInputRef.current?.focus()
     }, [])
 
-    async function handleSubmit(evt: FormEvent<HTMLFormElement>){
+    async function handleSubmit(evt: FormEvent<HTMLFormElement>) {
 
         evt.preventDefault();
 
         console.log("username", usernameInputRef.current?.value);
 
-        if(!username || !password){
-           setMessage("Enter the credentials");
+        if (!username || !password) {
+            setMessage("Enter the credentials");
         }
-        else{
+        else {
             // API call to validate the creds
             const url = "http://localhost:9000/login";
             // axios
@@ -40,28 +42,39 @@ export default function LoginPage() {
             //     })
 
             try {
-                
-                const response = await axios.post(url, {name: username, password});
+
+                const response = await axios.post(url, { name: username, password });
                 console.log("fullfilled", response);
                 setMessage("");
-                router.push("/")
+                //dispatch an action(login)
+                dispatch({
+                    type: "login", payload: {
+                        isAuthenticated: true,
+                        username,
+                        accessToken: response.data.accessToken,
+                        refreshToken: response.data.refreshToken
+                    }
+                })
+                router.push("/products")
 
             } catch (error) {
                 console.log("rejected", error);
-                setMessage("Invalid credentials")
+                setMessage("Invalid credentials");
+                //dispatch an action(logout)
+                dispatch({type: "logout"})
             }
 
 
-            
+
         }
 
     }
 
-    function handleUsernameChange(evt: ChangeEvent<HTMLInputElement>){
-        
+    function handleUsernameChange(evt: ChangeEvent<HTMLInputElement>) {
+
         const value = evt.target.value;
         setUsername(value)
-       
+
     }
 
     return (
@@ -74,15 +87,15 @@ export default function LoginPage() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
-                    <input  ref={usernameInputRef} type="text" className="form-control" id="username" 
-                            value={username} onChange={handleUsernameChange}/>
+                    <input ref={usernameInputRef} type="text" className="form-control" id="username"
+                        value={username} onChange={handleUsernameChange} />
                     {/* <span>You entered {username}</span> */}
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="pwd">Password</label>
-                    <input type="password" className="form-control" id="pwd" value={password} 
-                                                                onChange={evt => setPassword(evt.target.value)}/>
+                    <input type="password" className="form-control" id="pwd" value={password}
+                        onChange={evt => setPassword(evt.target.value)} />
                 </div>
 
                 <br />
