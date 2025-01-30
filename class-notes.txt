@@ -86,6 +86,7 @@ App Design
 		- Modular, easy to maintain and test
 	- Higher Order Components : components that wrap other components
 	- Custom Hooks
+		-reuseability, modular, easy test
 		
 Optimization
 	-React.memo : HOC
@@ -207,7 +208,21 @@ GadgetStore & View Cart(Excercise)
 			
 	
 
+Flow of a Client Component with Data Fetching
+
+1. Request of the page(route).
+2. The page(React component) is downloaded from the server
+3. The component is executed on the browser which return jSX, converted to HTML
+4. HTML rendered on the browser(first render)
+5. The mounted useEffect is called - invoke an API
+6. A new API request send to the server to fetch the data
+7. The component is rerendered.
 
 
+Flow of a Server Component with Data Fetching
 
-
+1. Request of the page(route).
+2. The page(React Component) is executed on the server.
+3. The component code can access backend(database/ api)
+4. The component return jSX, converted to HTML
+5. The HTML is return the browser for rendering

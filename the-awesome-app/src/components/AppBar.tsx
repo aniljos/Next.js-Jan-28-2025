@@ -42,6 +42,9 @@ export function AppBar() {
             <Link className="nav-link" href="/view-cart">ViewCart</Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link" href="/customers">Customers</Link>
+          </li>
+          <li className="nav-item">
             <button className="btn btn-warning" onClick={changeTheme}>Switch Theme</button>
           </li>
         </ul>
