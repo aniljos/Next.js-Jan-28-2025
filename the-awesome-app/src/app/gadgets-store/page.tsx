@@ -2,12 +2,16 @@
 import { Product } from '@/model/Product';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import  * as gadgetsReducer from '@/redux/gadgetsReducer';
+import { CartItem } from '@/model/CartItem';
 
 
 const baseUrl = "http://localhost:9000/products";
 function GadgetStore(){
 
     const [products, setProducts] = useState<Product[]>([]);
+    const dispatch = useDispatch();
     
     useEffect(() => {
 
@@ -31,7 +35,9 @@ function GadgetStore(){
     
 
     function addToCart(product: Product): void {
-        
+
+        const action  = gadgetsReducer.addToCart(new CartItem(product, 1));
+        dispatch(action);
     }
 
     function renderProducts() {

@@ -151,6 +151,24 @@ Redux
 	- {type: "clear_token"}
   Reducer - a function
 	- receive the action, updated the state in the store
+	- must be synchronous. No any async code like an axios/ fetch call.
+	
+  Middleware
+    - intercepts the action.
+	- Logging, validate etc.
+	- async code
+	- Middleware libraries for async => redux-thunk, redux-saga
+  Action creator
+    - Design Pattern
+	- Helper method to create an actions
+  Redux Toolkit
+	-  Provides all the boilerplate code(design pattern)
+	-  Simplify the using redux 
+	-  slices => object which provide a way to work with state as mutable
+	- action creator
+	
+  
+	
 	
   react-redux library
 	-Provider: component to integrate redux with react
@@ -161,7 +179,23 @@ Redux
 	
 	
   
-		
+React context
+	- A low level API
+    - Multiple contexts
+	- We need to manage the state updates(rerendering of UI) 
+	
+react hooks
+	-useState
+	-useEffect
+	-useRef
+	-useContext
+	-useReducer - reducer deisgn pattern, state hook
+	
+GadgetStore & View Cart(Excercise)
+
+ - implement the functionality using React Context and useReducer/useState
+			
+			
 	
 
 

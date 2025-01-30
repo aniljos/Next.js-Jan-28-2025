@@ -11,7 +11,10 @@ const reducers = combineReducers({
 // create the store
 export const store = configureStore({
     reducer: reducers,
-    devTools: true
+    devTools: true,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false,
+    }),
 });
 
 export type AppState = ReturnType<typeof store.getState>;

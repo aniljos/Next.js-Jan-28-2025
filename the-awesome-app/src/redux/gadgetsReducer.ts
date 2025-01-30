@@ -55,4 +55,6 @@ const slice = createSlice({
     }
 });
 
+//action creators
+export const {addToCart, removeItem} = slice.actions;
 export const gadgetsReducer = slice.reducer;

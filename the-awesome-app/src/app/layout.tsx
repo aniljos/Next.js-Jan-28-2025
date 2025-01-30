@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AppBar } from "@/components/AppBar";
 import { ReduxProvider } from "@/redux/ReduxProvider";
+import { AppThemeContextProvider } from "@/context/AppThemeContext";
 
 
 
@@ -34,10 +35,12 @@ export default function RootLayout({
         <div className="container">
 
           <ReduxProvider>
-            <AppBar />
-            <main>
-              {children}
-            </main>
+            <AppThemeContextProvider>
+              <AppBar />
+              <main>
+                {children}
+              </main>
+            </AppThemeContextProvider>
           </ReduxProvider>
 
 
