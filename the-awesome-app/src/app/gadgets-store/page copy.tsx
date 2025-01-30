@@ -1,17 +1,38 @@
 'use client'
 import { Product } from '@/model/Product';
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import  * as gadgetsReducer from '@/redux/gadgetsReducer';
 import { CartItem } from '@/model/CartItem';
-import { useProducts } from '@/hooks/useProducts';
 
 
 const baseUrl = "http://localhost:9000/products";
 function GadgetStore(){
 
-    const {products} = useProducts(baseUrl);
+    const [products, setProducts] = useState<Product[]>([]);
     const dispatch = useDispatch();
+    
+    useEffect(() => {
+
+        fetchProducts();
+
+    }, [])
+
+    async function fetchProducts(){
+
+        try {  
+            const resp = await axios.get<Product[]>(baseUrl);
+            setProducts(resp.data);
+            console.log("resp:", resp);
+
+        } catch (error) {
+            console.log("error:", error);
+        }
+
+    }
+    
+    
 
     function addToCart(product: Product): void {
 

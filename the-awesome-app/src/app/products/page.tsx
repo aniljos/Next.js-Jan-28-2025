@@ -2,20 +2,26 @@
 
 import { Product } from "@/model/Product";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import classes from './page.module.css';
+import { useCallback, useEffect, useMemo, useState } from "react";
+
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import {  AppState } from "@/redux/store";
+import { ProductView } from "./ProductView";
+import { useTitle } from "@/hooks/useTitle";
 
 //const baseUrl = "http://localhost:9000/products";
 const baseUrl = "http://localhost:9000/secure_products";
 
 export default function ListProductsPage(){
 
+
+   
     const [products, setProducts] = useState<Product[]>([]);
     const router = useRouter();
-    const auth = useSelector((state: AppState) => state.auth)
+    const auth = useSelector((state: AppState) => state.auth);
+    const [isMessageVisible, setMessageVisible] = useState(false);
+    useTitle("ListProducts");
 
     useEffect(() => {
 
@@ -49,7 +55,7 @@ export default function ListProductsPage(){
 
     const conatinerStyles = {display: "flex", flexFlow: "row wrap", justifyContent: "center", };
 
-    async function deleteProduct(product:Product){
+    const deleteProduct = useCallback( async function deleteProduct(product:Product){
 
         const url = baseUrl + "/" + product.id;
         const headers = {"Authorization": `Bearer ${auth.accessToken}`}
@@ -70,28 +76,43 @@ export default function ListProductsPage(){
             alert("Failed to delete product: " + product.id)
         }
 
-    }
-    function editProduct(product: Product){
+    }, [products])
+
+
+    const editProduct = useCallback(function editProduct(product: Product){
 
         router.push("/products/" + product.id);
-    }
+
+    }, [])
+
+    const totalPrice = useMemo(function(){
+
+        console.log("calculating prices...");
+        let totalPrice = 0;
+        products.forEach(p => {
+
+            if(p.price)
+            totalPrice += p.price;
+        })
+
+        return totalPrice;
+    }, [products])
+
     return (
         <div>
             <h3>List Products</h3>
+
+            <div className="alert alert-primary">TotalPrice: {totalPrice}</div>
+
+            {isMessageVisible ? <div className="alert alert-info">This is an example of data fetching in React usin axios</div>: null}
+            <br />
+            <button className="btn btn-secondary" onClick={() => setMessageVisible(c => !c)}>{isMessageVisible ? "Hide" : "Show"}</button>
+
             <div style={conatinerStyles}>
                 {products.map(product => {
 
                     return (
-                        <div key={product.id} className={classes.product}>
-                           <p>Id: {product.id}</p>
-                           <p>{product.name}</p>
-                           <p>{product.description}</p>
-                           <p>Price: {product.price}</p>     
-                           <div>
-                                <button className="btn btn-warning" onClick={() => {deleteProduct(product)}}>Delete</button>&nbsp;
-                                <button className="btn btn-secondary" onClick={() => editProduct(product)}>Edit</button>
-                           </div>
-                        </div>
+                        <ProductView key={product.id} product={product} onDelete={deleteProduct} onEdit={editProduct}/>
                     )
                 })}
 

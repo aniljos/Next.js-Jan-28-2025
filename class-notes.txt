@@ -84,7 +84,16 @@ App Design
 	- Components are the building block
 	- Keep the components small
 		- Modular, easy to maintain and test
+	- Higher Order Components : components that wrap other components
+	- Custom Hooks
 		
+Optimization
+	-React.memo : HOC
+	-useCallback
+	-useMemo
+	
+	-Virtal DOM
+
 Form Controls
 	- uncontrolled : read/set the value by getting a reference the element: useRef
 		-non-reactive
