@@ -18,6 +18,12 @@ export function AppBar(){
             <li className="nav-item">
               <Link className="nav-link" href="/products">Products</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" href="/gadgets-store">Gadgets Store</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" href="/view-cart">ViewCart</Link>
+            </li>
           </ul>
         </div>
       </nav>
