@@ -8,6 +8,7 @@ REST API Mock: https://github.com/aniljos/REST-API-Mock
 Babel cdn: https://cdnjs.com/libraries/babel-standalone/7.26.3
 
 Quiz Day 1: https://forms.gle/5ii116MfS1V334Dv8
+Quiz Day 2: https://forms.gle/jVX3xvEyM62QaC5c7
 
 Project Files
 
