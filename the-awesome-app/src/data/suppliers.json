@@ -215,5 +215,19 @@
     "contactPerson": "Anil Joseph",
     "email": "anil@abc.com",
     "location": "Mumbai"
+  },
+  {
+    "id": 32,
+    "name": "Laptop Suppliers",
+    "contactPerson": "ANil",
+    "email": "lp@abc.com",
+    "location": "BLR"
+  },
+  {
+    "id": 100,
+    "name": "abc",
+    "contactPerson": "Anil",
+    "email": "abc@abc.com",
+    "location": "HYD"
   }
 ]

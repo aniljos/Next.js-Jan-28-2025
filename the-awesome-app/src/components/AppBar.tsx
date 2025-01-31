@@ -51,6 +51,9 @@ export function AppBar() {
             <Link className="nav-link" href="/viewcart-context">ViewCart Context</Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link" href="/suppliers">Suppliers</Link>
+          </li>
+          <li className="nav-item">
             <button className="btn btn-warning" onClick={changeTheme}>Switch Theme</button>
           </li>
         </ul>

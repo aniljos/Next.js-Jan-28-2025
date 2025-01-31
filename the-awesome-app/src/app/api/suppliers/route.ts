@@ -3,6 +3,8 @@ import path from 'path';
 import { promises as fs } from 'fs';
 import { Supplier } from "@/model/Supplier";
 
+
+
 //GET http://localhost:3000/api/suppliers
 export async function GET(request: Request) {
 

@@ -227,3 +227,12 @@ Flow of a Server Component with Data Fetching
 3. The component code can access backend(database/ api)
 4. The component return jSX, converted to HTML
 5. The HTML is return the browser for rendering
+
+
+Backend API's
+
+1. Created using any tech(Java/Spring, Python,JavaScript etc)
+		Its interoperable
+2. JavaScript: Node.js
+		- Express
+		- Nextjs
