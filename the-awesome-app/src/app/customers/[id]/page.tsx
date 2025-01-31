@@ -2,18 +2,19 @@ import { Customer } from "@/model/Customer";
 import Link from "next/link";
 
 type CustomerViewPageProps = {
-    params: {id: number}
+    params: Promise< {id: number}>
 }
 
 export default async function CustomerViewPage(props: CustomerViewPageProps){
 
-    const url = "http://localhost:9000/customers/" + props.params.id;
+    const id = (await (props.params)).id
+    const url = "http://localhost:9000/customers/" + id;
     const response = await fetch(url);
     const customer = await response.json() as Customer;
 
     return (
         <div>
-            <h3>Customer View: {props.params.id}</h3>
+            <h3>Customer View: {id}</h3>
 
             <div className="alert alert-secondary">
                 {customer.name} is located at {customer.location}

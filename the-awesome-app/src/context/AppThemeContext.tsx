@@ -8,7 +8,7 @@ export type ThemeState = {
 }
 
 export const initialThemeState: ThemeState = {
-    mode: 'light'
+    mode: 'dark'
 }
 
 // creates the context/store

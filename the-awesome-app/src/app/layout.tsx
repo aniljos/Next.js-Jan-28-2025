@@ -4,6 +4,7 @@ import "./globals.css";
 import { AppBar } from "@/components/AppBar";
 import { ReduxProvider } from "@/redux/ReduxProvider";
 import { AppThemeContextProvider } from "@/context/AppThemeContext";
+import GadgetsContextProvider from "@/context/GadgetsContext";
 
 
 
@@ -36,10 +37,12 @@ export default function RootLayout({
 
           <ReduxProvider>
             <AppThemeContextProvider>
+              <GadgetsContextProvider>
               <AppBar />
               <main>
                 {children}
               </main>
+              </GadgetsContextProvider>
             </AppThemeContextProvider>
           </ReduxProvider>
 
