@@ -31,6 +31,7 @@ export default function EditProductPage(){
 
     function handleNameChange(evt: ChangeEvent<HTMLInputElement>){
 
+        
         const copy_of_product = {...product};
         copy_of_product.name = evt.target.value;
         setProduct(copy_of_product);
